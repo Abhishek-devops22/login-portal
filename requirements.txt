@@ -1,0 +1,11 @@
+flask
+flask_wtf
+flask_mail
+flask_sqlalchemy
+flask_session
+Flask-WTF
+WTForms
+email_validator
+python-dotenv
+gunicorn
+# Add any other packages you need

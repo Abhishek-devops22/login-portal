@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <div class="auth-card">
+    <h1>Register</h1>
+    <form action="{{ url_for('register') }}" method="post" novalidate>
+      {{ form.csrf_token }}
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Name" value="{{ form.name.data or '' }}" data-rules="required,maxlength:100">
+        <p class="field-error" id="name-error">{{ form.name.errors[0] if form.name.errors else '' }}</p>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Email" value="{{ form.email.data or '' }}" data-rules="required,email,maxlength:100">
+        <p class="field-error" id="email-error">{{ form.email.errors[0] if form.email.errors else '' }}</p>
+      </div>
+      <div class="field">
+        <label for="mobile_number">Mobile Number</label>
+        <input type="text" id="mobile_number" name="mobile_number" placeholder="Mobile Number" value="{{ form.mobile_number.data or '' }}" data-rules="required,minlength:7,maxlength:20">
+        <p class="field-error" id="mobile_number-error">{{ form.mobile_number.errors[0] if form.mobile_number.errors else '' }}</p>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" data-rules="required,minlength:6">
+        <p class="field-error" id="password-error">{{ form.password.errors[0] if form.password.errors else '' }}</p>
+      </div>
+      <div class="field">
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" placeholder="City" value="{{ form.city.data or '' }}" data-rules="required,maxlength:50">
+        <p class="field-error" id="city-error">{{ form.city.errors[0] if form.city.errors else '' }}</p>
+      </div>
+      <div class="field">
+        <label for="country">Country</label>
+        <input type="text" id="country" name="country" placeholder="Country" value="{{ form.country.data or '' }}" data-rules="required,maxlength:50">
+        <p class="field-error" id="country-error">{{ form.country.errors[0] if form.country.errors else '' }}</p>
+      </div>
+      <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+  </div>
+{% endblock %}

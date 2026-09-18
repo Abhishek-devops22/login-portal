@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <section class="welcome-banner">
+    <h1>Welcome back, {{ user.name }}.</h1>
+    <p>Signed in as {{ user.email }} &middot; {{ user.city }}, {{ user.country }}</p>
+  </section>
+
+  <section class="job-list">
+    <h2>Recommended Jobs</h2>
+    <div class="job-grid">
+      {% for job in jobs %}
+        <article class="job-card">
+          <h3>{{ job.title }}</h3>
+          <p class="job-meta">{{ job.company }} &middot; {{ job.location }}</p>
+          <p>{{ job.description }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}
