@@ -34,24 +34,29 @@ flowchart TD
 
 Project Structure:
 
-
+```
 job_portal/
-app.py
-models.py
-routes.py
-templates/
-base.html
-login.html
-register.html
-forgot_password.html
-templates_static/
-static/
-css/
-style.css
-js/
-script.js
-requirements.txt
-venv
+├── app.py                    # Flask app: routes, auth/session logic, password reset, mail
+├── models.py                 # SQLAlchemy User model
+├── forms.py                  # WTForms: Register, Login, ForgotPassword, ResetPassword
+├── requirements.txt          # Python dependencies
+├── .env.example               # Template for required environment variables (copy to .env)
+├── aws_setup.md               # Notes for deploying to an AWS EC2 instance
+├── templates/
+│   ├── base.html              # Shared layout extended by the pages below
+│   ├── login.html
+│   ├── register.html
+│   ├── forgot_password.html
+│   ├── reset_password.html
+│   └── home.html              # Post-login landing page (job listings)
+├── static/
+│   ├── css/style.css
+│   └── js/validate.js
+└── instance/
+    └── job_portal.db          # SQLite database (created at runtime, gitignored)
+```
+
+Unused/legacy (present in the repo but not referenced by the app): `routes.py`, top-level `style.css` and `script.js`, and the empty `css/`, `js/`, `templates_static/` directories. `templates/index.html` also exists but isn't rendered — the `/` route serves `login.html` instead.
 
 
 Step 1: Create a new virtual environment
