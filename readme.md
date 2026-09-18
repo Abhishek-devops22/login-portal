@@ -4,8 +4,8 @@ Job Portal Login Application
 
 ```mermaid
 flowchart TD
-    Start([Visit "/"]) --> LoggedIn{Session has username?}
-    LoggedIn -- Yes --> Home[/Home: browse jobs/]
+    Start([Visit site root]) --> LoggedIn{Session has username?}
+    LoggedIn -- Yes --> Home[Home: browse jobs]
     LoggedIn -- No --> Login[Login page]
 
     Login -- New user --> Register[Register page]
@@ -13,18 +13,18 @@ flowchart TD
     RegCheck -- Yes --> Register
     RegCheck -- No --> CreateUser[Create user in DB] --> Login
 
-    Login -- Submit credentials --> AuthCheck{Email + password match?}
+    Login -- Submit credentials --> AuthCheck{Email and password match?}
     AuthCheck -- No --> Login
     AuthCheck -- Yes --> SetSession[Set session username] --> Home
 
     Login -- Forgot password --> Forgot[Forgot Password page]
     Forgot -- Submit email --> LookupUser{Email registered?}
-    LookupUser -- Yes --> SendMail[Generate signed token & email/log reset link]
+    LookupUser -- Yes --> SendMail[Generate signed token, email or log reset link]
     LookupUser -- No --> SameMsg[Show same generic message]
     SendMail --> SameMsg --> Login
 
     SendMail -.-> ResetLink[User opens reset link]
-    ResetLink --> TokenCheck{Token valid & not expired?}
+    ResetLink --> TokenCheck{Token valid and not expired?}
     TokenCheck -- No --> Forgot
     TokenCheck -- Yes --> ResetForm[Reset Password page]
     ResetForm -- Submit new password --> UpdatePw[Update password hash in DB] --> Login
