@@ -56,7 +56,6 @@ job_portal/
     └── job_portal.db          # SQLite database (created at runtime, gitignored)
 ```
 
-Unused/legacy (present in the repo but not referenced by the app): `routes.py`, top-level `style.css` and `script.js`, and the empty `css/`, `js/`, `templates_static/` directories. `templates/index.html` also exists but isn't rendered — the `/` route serves `login.html` instead.
 
 
 Step 1: Create a new virtual environment
